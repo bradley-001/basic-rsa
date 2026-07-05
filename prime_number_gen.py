@@ -20,7 +20,7 @@ def _genRandomNumber(byteSize: int):
     )
 
 
-def _is_prime_miller_rabin(candidate, rounds=20):
+def _is_prime_miller_rabin(candidate, rounds=30):
     if candidate < 2:
         return False
     if candidate == 2:
