@@ -3,6 +3,25 @@ revision = 3
 requires-python = ">=3.11"
 
 [[package]]
+name = "brads-rsa"
+version = "0.1.1"
+source = { editable = "." }
+dependencies = [
+    { name = "gmpy2" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "gmpy2-stubs" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "gmpy2", specifier = ">=2.3.1" }]
+
+[package.metadata.requires-dev]
+dev = [{ name = "gmpy2-stubs", specifier = ">=2.2.1.5" }]
+
+[[package]]
 name = "gmpy2"
 version = "2.3.1"
 source = { registry = "https://pypi.org/simple" }
@@ -79,22 +98,3 @@ sdist = { url = "https://files.pythonhosted.org/packages/58/36/2339da62e9af9a1bb
 wheels = [
     { url = "https://files.pythonhosted.org/packages/77/d8/1444c88c3dd1e3eaea85a6c917fee9481f833a5ba805e87b59c4a1a565d8/gmpy2_stubs-2.2.1.5-py3-none-any.whl", hash = "sha256:8d6c6db2603628e1c9d65e49db8f99e2a592e99a0eecee2591084b18a193b4fe", size = 12234, upload-time = "2025-04-09T09:27:11.092Z" },
 ]
-
-[[package]]
-name = "rsa-testing"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "gmpy2" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "gmpy2-stubs" },
-]
-
-[package.metadata]
-requires-dist = [{ name = "gmpy2", specifier = ">=2.3.1" }]
-
-[package.metadata.requires-dev]
-dev = [{ name = "gmpy2-stubs", specifier = ">=2.2.1.5" }]

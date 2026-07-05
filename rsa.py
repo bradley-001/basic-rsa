@@ -1,4 +1,3 @@
-from encodings import undefined
 import hmac
 
 from core import is_valid_public_exponent, lcm, phi

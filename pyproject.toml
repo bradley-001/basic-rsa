@@ -1,7 +1,7 @@
 [project]
-name = "rsa-testing"
-version = "0.1.0"
-description = "Add your description here"
+name = "Brads-RSA"
+version = "0.1.1"
+description = "Simple RSA written in python"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -11,4 +11,25 @@ dependencies = [
 [dependency-groups]
 dev = [
     "gmpy2-stubs>=2.2.1.5",
+]
+
+[project.scripts]
+brsa = "main:main"
+
+[tool.uv]
+package = true
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = [
+    "main",
+    "rsa",
+    "files",
+    "core",
+    "prime_number_gen",
+    "pkcs_encoding",
+    "small_primes",
 ]
