@@ -6,8 +6,8 @@ The implementation uses SHA256 and currently I have not written support for SHA5
 
 Signing uses CRT (Chineese Remainder Theorem) to split the signing operation into two half sized exponentiaions. About a 3x/4x speed improvement over textbook RSA and mirrors what most RSA implemenations use.
 
-> [!CAUTION] CAUTION
-This code is **not** suitable for production use or use for genuine security purposes. This is a educational exercise into RSA. Real world implementations have additional protections and mitigations for advanced cryptographic attacks that this does not. I.e. Constant-time execution and blinding processes.
+> [!CAUTION]
+> This code is **not** suitable for production use! This is a educational exercise into RSA. Real world implementations have additional protections and mitigations for advanced cryptographic attacks that this rather basic implementation **does not**. I.e. Constant-time execution and blinding processes.
 
 ## Install
 
@@ -48,6 +48,6 @@ Verify a signature:
 brsa verify message.txt.sig mykey.pub
 ```
 
-The signature filename must end in `.sig` — the original file is looked up by stripping that suffix, so `message.txt.sig` is checked against `message.txt`.
+The signature filename must end in `.sig`. The original file is looked up by stripping that suffix, so `message.txt.sig` is checked against `message.txt`.
 
 Exits non-zero if verification fails or something goes wrong.
