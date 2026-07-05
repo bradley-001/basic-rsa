@@ -111,12 +111,16 @@ def _cmd_verify(args):
 def main():
     args = build_parser().parse_args()
 
-    if args.command == "gen":
-        _cmd_gen(args)
-    elif args.command == "sign":
-        _cmd_sign(args)
-    elif args.command == "verify":
-        _cmd_verify(args)
+    try:
+        if args.command == "gen":
+            _cmd_gen(args)
+        elif args.command == "sign":
+            _cmd_sign(args)
+        elif args.command == "verify":
+            _cmd_verify(args)
+    except (FileNotFoundError, ValueError, TypeError) as e:
+        print(f"error: {e}", file=sys.stderr)
+        sys.exit(1)
 
 
 if __name__ == "__main__":

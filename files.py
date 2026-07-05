@@ -29,16 +29,19 @@ def read_key(filepath: str) -> Public_key | Private_key:
         raw = base64.decodebytes(f.read().encode("ascii")).decode("ascii")
 
     lines = raw.strip().splitlines()
-    fields = dict(line.split(":", 1) for line in lines)
+    try:
+        fields = dict(line.split(":", 1) for line in lines)
+        key_type = fields["type"]
+        if key_type == "publickey":
+            return Public_key(int(fields["n"]), int(fields["e"]))
+        if key_type == "privatekey":
+            return Private_key(
+                int(fields["n"]), int(fields["d"]), int(fields["p"]), int(fields["q"])
+            )
+    except (KeyError, ValueError) as e:
+        raise ValueError(f"malformed key file {filepath!r}: {e}") from None
 
-    if fields["type"] == "publickey":
-        return Public_key(int(fields["n"]), int(fields["e"]))
-    if fields["type"] == "privatekey":
-        return Private_key(
-            int(fields["n"]), int(fields["d"]), int(fields["p"]), int(fields["q"])
-        )
-
-    raise ValueError(f"Unknown key type: {fields['type']!r}")
+    raise ValueError(f"{filepath!r}: unknown key type {key_type!r}")
 
 
 def write_key(filepath: str, key: Public_key | Private_key) -> None:
