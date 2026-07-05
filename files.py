@@ -16,18 +16,19 @@ def write_bytes(filepath: str, data: bytes) -> None:
 
 def write_bytes_as_base64(filepath: str, data: bytes) -> None:
     with open(filepath, "w") as f:
-        f.write(base64.b64encode(data).decode(encoding="utf-8"))
+        f.write(base64.encodebytes(data).decode("ascii"))
 
 
 def read_bytes_from_base64(filepath: str) -> bytes:
     with open(filepath, "r") as f:
-        return base64.b64decode(f.read())
+        return base64.decodebytes(f.read().encode("ascii"))
 
 
 def read_key(filepath: str) -> Public_key | Private_key:
     with open(filepath, "r") as f:
-        lines = f.read().strip().splitlines()
+        raw = base64.decodebytes(f.read().encode("ascii")).decode("ascii")
 
+    lines = raw.strip().splitlines()
     fields = dict(line.split(":", 1) for line in lines)
 
     if fields["type"] == "publickey":
@@ -54,8 +55,9 @@ def write_key(filepath: str, key: Public_key | Private_key) -> None:
     else:
         raise TypeError(f"Unsupported key type: {type(key)!r}")
 
+    raw = ("\n".join(lines) + "\n").encode("ascii")
     with open(filepath, "w") as f:
-        f.write("\n".join(lines) + "\n")
+        f.write(base64.encodebytes(raw).decode("ascii"))
 
 
 def gen_random_filename(noOfBytes: int = 4):
