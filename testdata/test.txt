@@ -1,0 +1,15 @@
+The Baillie–PSW primality test is a probabilistic or possibly deterministic primality testing algorithm that determines whether a number is composite or is a probable prime. It is named after Robert Baillie, Carl Pomerance, John Selfridge, and Samuel Wagstaff.
+
+The Baillie–PSW test is a combination of a strong Fermat probable prime test to base 2 and a standard or strong Lucas probable prime test. The Fermat and Lucas test each have their own list of pseudoprimes, that is, composite numbers that pass the test. For example, the first ten strong pseudoprimes to base 2 are
+
+    2047, 3277, 4033, 4681, 8321, 15841, 29341, 42799, 49141, and 52633 (sequence A001262 in the OEIS).
+
+The first ten strong Lucas pseudoprimes (with Lucas parameters (P, Q) defined by Selfridge's Method A) are
+
+    5459, 5777, 10877, 16109, 18971, 22499, 24569, 25199, 40309, and 58519 (sequence A217255 in the OEIS).
+
+There is no known overlap between these lists, and there is even evidence that the numbers tend to be of different kind, in fact even with standard and not strong Lucas test there is no known overlap. For example, Fermat pseudoprimes to base 2 tend to fall into the residue class 1 (mod m) for many small m, whereas Lucas pseudoprimes tend to fall into the residue class −1 (mod m).[1]: §6 [2]: Table 2 & §5  As a result, a number that passes both a strong Fermat base 2 and a strong Lucas test is very likely to be prime. If a random base is chosen, there might be some composite n that passes both the Fermat and Lucas tests. For example, n=5777 is a strong psp base 76, and is also a strong Lucas pseudoprime.
+
+No composite number below 264 (approximately 1.845·1019) passes the strong or standard Baillie–PSW test;[3] this result was also separately verified by Charles Greathouse in June 2011. Consequently, this test is a deterministic primality test on numbers below 264. There are also no known composite numbers above that bound that pass the test; in other words, there are no known Baillie–PSW pseudoprimes.
+
+In 1980, the authors Pomerance, Selfridge, and Wagstaff offered $30 for the discovery of a counterexample, that is, a composite number that passed this test, or the production of a proof of this test's correctness.[1] A heuristic argument by Pomerance suggests that there are infinitely many counterexamples.[4] There is also a $2000 bounty on a strengthened version of this test.[5]

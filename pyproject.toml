@@ -1,0 +1,14 @@
+[project]
+name = "rsa-testing"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "gmpy2>=2.3.1",
+]
+
+[dependency-groups]
+dev = [
+    "gmpy2-stubs>=2.2.1.5",
+]
